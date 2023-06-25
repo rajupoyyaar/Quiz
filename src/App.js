@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Start from "./Start"
+import Questions from "./Questions";
 
 function App() {
+const [startQuiz, setStartQuiz] = React.useState(false)
+
+function handleClick(){
+  setStartQuiz(!startQuiz)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      {startQuiz ? "" :
+      <Start 
+       startBtn = {handleClick}
+       />}
+
+      {startQuiz && 
+      <Questions 
+      startBtn = {handleClick}
+      />}
     </div>
   );
 }
